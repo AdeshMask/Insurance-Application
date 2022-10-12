@@ -17,4 +17,7 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     @Query(value="Select * from insuranceDB.user where health_condition = :healthcondition",nativeQuery = true)
     List<User> findByHealthCondition(String healthcondition);
+
+    @Query(value="Select * from insuranceDB.user where vehicledata = :vehicledata",nativeQuery = true)
+    List<User> findByVehicleData(String vehicledata);
 }
