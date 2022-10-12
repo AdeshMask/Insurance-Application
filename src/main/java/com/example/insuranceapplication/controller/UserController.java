@@ -52,5 +52,15 @@ public class UserController {
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    @GetMapping("/getuserByDate")
+    public ResponseEntity<ResponseDTO> getUserByDate(@RequestParam String date1, @RequestParam String date2){
+        ResponseDTO responseDTO = new ResponseDTO("All User Records" , iUserService.getUserByDate(date1, date2));
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
 
+    @GetMapping("/getuserByHealthCondition/{healthcondition}")
+    public ResponseEntity<ResponseDTO> getuserByHealthCondition(@PathVariable String healthcondition){
+        ResponseDTO responseDTO = new ResponseDTO("All User Records" , iUserService.getuserByHealthCondition(healthcondition));
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
 }

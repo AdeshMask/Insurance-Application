@@ -15,4 +15,8 @@ public interface IUserService {
     String remove(Long id);
 
     Object login(LoginDto loginDto);
+
+    Object getUserByDate(String date1, String date2);
+
+    Object getuserByHealthCondition(String healthcondition);
 }
