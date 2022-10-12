@@ -8,6 +8,7 @@ import com.example.insuranceapplication.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,5 +53,17 @@ public class UserService implements IUserService{
     public Object login(LoginDto loginDto) {
         User user = userRepo.findByEmailIdAndPassword(loginDto.email, loginDto.password);
         return user;
+    }
+
+    @Override
+    public Object getUserByDate(String date1, String date2) {
+        List<User> users = userRepo.findByDate(date1, date2);
+        return users;
+    }
+
+    @Override
+    public Object getuserByHealthCondition(String healthcondition) {
+        List<User> users = userRepo.findByHealthCondition(healthcondition);
+        return users;
     }
 }

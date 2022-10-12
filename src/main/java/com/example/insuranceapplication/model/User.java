@@ -29,8 +29,8 @@ public class User {
     private String KYC_File;
     private String healthCondition;
     private String vehicledata;
-    private LocalDate registerddate = LocalDate.now();
-    private LocalDate updateddate = LocalDate.now();
+    private String registerddate;
+    private String updateddate;
     private String userRole;
     private String email;
 
@@ -39,8 +39,8 @@ public class User {
         this.password = userDto.getPassword();
         this.userRole = userDto.getUserRole();
         this.email = userDto.getEmail();
-        this.updateddate = LocalDate.now();
-        this.registerddate = LocalDate.now();
+        this.updateddate = userDto.getUpdateddate();
+        this.registerddate = userDto.getRegisterddate();
         this.vehicledata = userDto.getVehicledata();
         this.healthCondition = userDto.getHealthCondition();
         this.KYC_File = userDto.getKYC_File();
@@ -59,8 +59,8 @@ public class User {
         this.password = userDto.getPassword();
         this.userRole = userDto.getUserRole();
         this.email = userDto.getEmail();
-        this.updateddate = LocalDate.now();
-        this.registerddate = LocalDate.now();
+        this.updateddate = userDto.getUpdateddate();
+        this.registerddate = userDto.getRegisterddate();
         this.vehicledata = userDto.getVehicledata();
         this.healthCondition = userDto.getHealthCondition();
         this.KYC_File = userDto.getKYC_File();

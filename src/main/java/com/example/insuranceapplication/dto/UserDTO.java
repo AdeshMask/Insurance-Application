@@ -20,4 +20,6 @@ public class UserDTO {
     private String vehicledata;
     private String userRole;
     private String email;
+    private String registerddate;
+    private String updateddate;
 }
