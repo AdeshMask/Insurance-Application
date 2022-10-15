@@ -63,4 +63,9 @@ public class UserController {
         ResponseDTO responseDTO = new ResponseDTO("All User Records" , iUserService.getuserByHealthCondition(healthcondition));
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
+    @GetMapping("/getuserByVehicleData/{vehicledata}")
+    public ResponseEntity<ResponseDTO> getuserByVehicleData(@PathVariable String vehicledata){
+        ResponseDTO responseDTO = new ResponseDTO("All User Records" , iUserService.getuserByVehicleData(vehicledata));
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
 }

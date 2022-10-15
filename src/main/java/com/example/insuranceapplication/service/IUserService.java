@@ -19,4 +19,6 @@ public interface IUserService {
     Object getUserByDate(String date1, String date2);
 
     Object getuserByHealthCondition(String healthcondition);
+
+    Object getuserByVehicleData(String vehicledata);
 }

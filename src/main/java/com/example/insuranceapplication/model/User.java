@@ -16,7 +16,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long userId;
 
     private String password;
     private String fullName;
@@ -54,7 +54,7 @@ public class User {
     }
 
     public User(Long id, UserDTO userDto) {
-        this.id = id;
+        this.userId = id;
         this.fullName = userDto.getFullName();
         this.password = userDto.getPassword();
         this.userRole = userDto.getUserRole();

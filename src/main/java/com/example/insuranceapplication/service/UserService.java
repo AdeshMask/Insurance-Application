@@ -66,4 +66,10 @@ public class UserService implements IUserService{
         List<User> users = userRepo.findByHealthCondition(healthcondition);
         return users;
     }
+
+    @Override
+    public Object getuserByVehicleData(String vehicledata) {
+        List<User> user = userRepo.findByVehicleData(vehicledata);
+        return user;
+    }
 }
