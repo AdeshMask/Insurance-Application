@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 @RestController
 @RequestMapping("/insurance")
 public class InsuranceCategoryController {
@@ -26,19 +27,19 @@ public class InsuranceCategoryController {
 
     @GetMapping("/getall")
     public ResponseEntity<ResponseDTO> showAll(){
-        ResponseDTO responseDTO = new ResponseDTO("All User Records" , iInsuranceCategory.showAll());
+        ResponseDTO responseDTO = new ResponseDTO("All Available Insurance" , iInsuranceCategory.showAll());
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
     @GetMapping("/getid/{id}")
     public ResponseEntity<ResponseDTO> findById(@PathVariable Long id){
-        ResponseDTO responseDTO = new ResponseDTO("Found User By Id "+id , iInsuranceCategory.findById(id));
+        ResponseDTO responseDTO = new ResponseDTO("Found Insurance By Id "+id , iInsuranceCategory.findById(id));
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<ResponseDTO> update(@PathVariable Long id,@RequestBody InsuranceCategoryDTO insuranceCategoryDTO){
-        ResponseDTO responseDTO = new ResponseDTO("Found User By Id "+id , iInsuranceCategory.update(id, insuranceCategoryDTO));
+        ResponseDTO responseDTO = new ResponseDTO("Found Insurance By Id "+id , iInsuranceCategory.update(id, insuranceCategoryDTO));
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 

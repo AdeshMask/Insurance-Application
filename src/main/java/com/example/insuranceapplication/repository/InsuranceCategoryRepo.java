@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InsuranceCategoryRepo extends JpaRepository<InsuranceCategory,Long> {
-    @Query(value = "select * from insuranceDB.insurance_category where insurance_name = insuranceName:")
-    InsuranceCategory findByName(String insuranceName);
+//    @Query(value = "select * from insuranceDB.insurance_category where insurance_name = insuranceName:")
+//    InsuranceCategory findByName(String insuranceName);
 }

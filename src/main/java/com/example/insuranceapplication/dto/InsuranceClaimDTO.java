@@ -15,5 +15,4 @@ public class InsuranceClaimDTO {
     Long insurance;
     String claimedDocuments;
     String claimedStatus;
-
 }
