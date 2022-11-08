@@ -14,25 +14,22 @@ import javax.persistence.*;
 public class InsuranceClaim {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User userID;
-
+    User userId;
     @ManyToOne
     @JoinColumn(name = "insurance_id")
-    InsuranceCategory insurance;
-
+    InsuranceCategory insuranceId;
     String claimedDocuments;
     String claimedStatus;
 
-
-    public InsuranceClaim(User user, InsuranceCategory insuranceCategory, InsuranceClaimDTO insuranceClaimDTO) {
-        this.userID = user;
-        this.insurance = insuranceCategory;
-        this.claimedDocuments = insuranceClaimDTO.getClaimedDocuments();
-        this.claimedStatus = insuranceClaimDTO.getClaimedStatus();
+    public InsuranceClaim(User user, InsuranceCategory insuranceCategory, String claimedDocuments, String claimedStatus) {
+        this.userId = user;
+        this.insuranceId = insuranceCategory;
+        this.claimedDocuments = claimedDocuments;
+        this.claimedStatus = claimedStatus;
     }
 }

@@ -10,6 +10,8 @@ import com.example.insuranceapplication.repository.InsuranceClaimRepo;
 import com.example.insuranceapplication.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,11 +25,11 @@ public class InsuranceClaimService implements IInsuranceClaim{
     InsuranceClaimRepo insuranceClaimRepo;
     @Override
     public Object createClaim(InsuranceClaimDTO insuranceClaimDTO) {
-        Optional<User> user = userRepo.findById(insuranceClaimDTO.getUserID());
+        Optional<User> user = userRepo.findById(insuranceClaimDTO.getUserId());
         if (user.isPresent()) {
-            Optional<InsuranceCategory> insuranceCategory = insuranceCategoryRepo.findById(insuranceClaimDTO.getInsurance());
+            Optional<InsuranceCategory> insuranceCategory = insuranceCategoryRepo.findById(insuranceClaimDTO.getInsuranceId());
             if (insuranceCategory.isPresent()) {
-                InsuranceClaim insuranceClaim = new InsuranceClaim(user.get(),insuranceCategory.get(),insuranceClaimDTO);
+                InsuranceClaim insuranceClaim = new InsuranceClaim(user.get(),insuranceCategory.get(),insuranceClaimDTO.getClaimedDocuments(), insuranceClaimDTO.getClaimedStatus());
                 return insuranceClaimRepo.save(insuranceClaim);
             }
             throw (new InsuranceExceptionHandler("Insurance not found"));
@@ -41,8 +43,16 @@ public class InsuranceClaimService implements IInsuranceClaim{
     }
 
     @Override
-    public Object getById(Long id) {
-        return insuranceClaimRepo.findById(id).orElseThrow(() -> new InsuranceExceptionHandler("Record Not Found"));
+    public List<InsuranceClaim> getById(Long id) {
+        Optional<User> user = userRepo.findById(id);
+        String role = user.get().getUserRole();
+        if(role.equals("Admin")){
+            return insuranceClaimRepo.findAll();
+        }
+        else
+        {
+            return insuranceClaimRepo.findByUserId(id);
+        }
     }
 
     @Override

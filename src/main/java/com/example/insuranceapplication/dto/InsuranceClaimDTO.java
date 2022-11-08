@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class InsuranceClaimDTO {
 
-    Long userID;
-    Long insurance;
+    Long userId;
+    Long insuranceId;
     String claimedDocuments;
     String claimedStatus;
 }

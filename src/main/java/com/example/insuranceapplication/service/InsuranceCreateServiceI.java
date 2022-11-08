@@ -30,7 +30,7 @@ public class InsuranceCreateServiceI implements IInsuranceCreateService{
         Optional<InsuranceCategory> insuranceCategory = insuranceCategoryRepo.findById(insuranceCreateDTO.insuranceID);
         if (insuranceCategory.isPresent() && user.isPresent()) {
             InsuranceCreate insuranceCreateService = new InsuranceCreate(user.get(), insuranceCategory.get(), insuranceCreateDTO.status
-                    , insuranceCreateDTO.monthPeriod, insuranceCreateDTO.registerdDate, insuranceCreateDTO.updatedDate);
+                    , insuranceCreateDTO.monthPeriod);
             return insuranceCreateServiceRepo.save(insuranceCreateService);
         }
         throw new InsuranceExceptionHandler("User Or Insurance Id not found");

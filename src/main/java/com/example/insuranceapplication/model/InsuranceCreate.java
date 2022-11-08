@@ -16,7 +16,6 @@ public class InsuranceCreate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
     @ManyToOne
     @JoinColumn(name = "userId")
     public User userToken;
@@ -25,26 +24,26 @@ public class InsuranceCreate {
     public InsuranceCategory insuranceID;
     public String status;
     public String monthPeriod;
-    public String registerdDate;
-    public String updatedDate;
+//    public String registerdDate;
+//    public String updatedDate;
     public boolean claimed = false;
 
-    public InsuranceCreate(User user, InsuranceCategory insuranceCategory, String status, String monthPeriod, String registerdDate, String updatedDate) {
+    public InsuranceCreate(User user, InsuranceCategory insuranceCategory, String status, String monthPeriod) {
         this.userToken = user;
         this.insuranceID = insuranceCategory;
-        this.updatedDate = updatedDate;
+//        this.updatedDate = updatedDate;
         this.monthPeriod = monthPeriod;
         this.status = status;
-        this.registerdDate =registerdDate;
+//        this.registerdDate =registerdDate;
     }
     public InsuranceCreate(Long id, User user, InsuranceCategory insuranceCategory, InsuranceCreateDTO insuranceCreateDTO) {
         this.id = id;
         this.userToken = user;
         this.insuranceID = insuranceCategory;
-        this.updatedDate = insuranceCreateDTO.getUpdatedDate();
+//        this.updatedDate = insuranceCreateDTO.getUpdatedDate();
         this.monthPeriod = insuranceCreateDTO.getMonthPeriod();
         this.status = insuranceCreateDTO.getStatus();
-        this.registerdDate =insuranceCreateDTO.getRegisterdDate();
+//        this.registerdDate =insuranceCreateDTO.getRegisterdDate();
         this.claimed = insuranceCreateDTO.isClaimed();
     }
 }
